@@ -12,10 +12,12 @@
   "dependencies": {
     "@capacitor/cli": "^6.1.1",
     "@capacitor/core": "^6.1.1",
+    "@nonam-abrege/abrege-nuxt-commons": "^2.4.38",
     "nuxt": "^3.12.4",
     "vue": "latest"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.12.1"
-  }
+  },
+  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }
