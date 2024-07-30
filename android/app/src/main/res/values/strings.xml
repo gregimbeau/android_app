@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">caisse-test</string>
+    <string name="title_activity_main">caisse-test</string>
+    <string name="package_name">com.abrege.caisse</string>
+    <string name="custom_url_scheme">com.abrege.caisse</string>
+</resources>
