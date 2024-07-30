@@ -4,7 +4,7 @@
     <p class="text-xl mt-4">Sélectionnez une option du menu ci-dessous :</p>
     <ul class="mt-6 space-y-4">
       <li>
-        <nuxt-link to="/accueil" class="block px-4 py-2 bg-green-500 text-white rounded">Accueil</nuxt-link>
+        <nuxt-link to="/accueil" class="block px-4 py-2 bg-blue-500 text-white rounded">Accueil</nuxt-link>
       </li>
       <li>
         <nuxt-link to="/paiement" class="block px-4 py-2 bg-green-500 text-white rounded">Page de Paiement</nuxt-link>
