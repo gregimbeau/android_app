@@ -12,8 +12,16 @@
   "dependencies": {
     "@capacitor/cli": "^6.1.1",
     "@capacitor/core": "^6.1.1",
-    "@nonam-abrege/abrege-nuxt-commons": "^2.4.38",
+    "@radix-icons/vue": "^1.0.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.417.0",
     "nuxt": "^3.12.4",
+    "radix-vue": "^1.9.2",
+    "shadcn-nuxt": "^0.10.4",
+    "tailwind-merge": "^2.4.0",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.5.4",
     "vue": "latest"
   },
   "devDependencies": {
