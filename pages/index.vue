@@ -3,6 +3,12 @@
     <h1 class="text-4xl font-bold mb-6">Restaurant POS System</h1>
     <div class="grid grid-cols-4 gap-4">
       <ItemButton v-for="item in menuItems" :key="item.id" :item="item" @addItem="addItemToOrder" />
+      <!-- Bouton pour ouvrir la modale de scan -->
+      <div class="col-span-2">
+        <div class="barcode-scanner bg-yellow-500 text-white flex items-center justify-center cursor-pointer rounded-2xl h-24" @click="openScannerModal">
+          <span>Scanner un code-barres</span>
+        </div>
+      </div>
     </div>
     <div class="mt-8">
       <OrderSummary :orderItems="orderItems" @removeItem="removeItemFromOrder" />
@@ -11,6 +17,8 @@
       <button class="bg-green-500 text-white px-4 py-2 rounded" @click="processPayment">Process Payment</button>
       <button class="bg-red-500 text-white px-4 py-2 rounded" @click="clearOrder">Clear Order</button>
     </div>
+    <!-- Affiche la modale de scan si showScannerModal est true -->
+    <BarcodeScannerModal v-if="showScannerModal" @close="showScannerModal = false" />
   </div>
 </template>
 
@@ -18,6 +26,7 @@
 import { ref } from 'vue';
 import ItemButton from '~/components/ItemButton.vue';
 import OrderSummary from '~/components/OrderSummary.vue';
+import BarcodeScannerModal from '~/components/BarcodeScanner.vue';
 
 const menuItems = ref([
   { id: 1, name: 'Pizza', price: 12 },
@@ -30,6 +39,7 @@ const menuItems = ref([
 ]);
 
 const orderItems = ref([]);
+const showScannerModal = ref(false);
 
 const addItemToOrder = (item) => {
   const existingItem = orderItems.value.find(orderItem => orderItem.id === item.id);
@@ -57,5 +67,9 @@ const processPayment = () => {
 
 const clearOrder = () => {
   orderItems.value = [];
+};
+
+const openScannerModal = () => {
+  showScannerModal.value = true;
 };
 </script>
