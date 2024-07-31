@@ -11,7 +11,6 @@
         <div v-if="scanning" class="flex flex-col items-center justify-center">
           <p class="text-center mb-4">Positionnez le code-barres devant la camera</p>
           <div class="loader mb-4"></div>
-          <p class="text-center mb-4">Veuillez patienter, scan en cours...</p>
         </div>
         <div v-if="detectedBarcode" class="flex flex-col items-center justify-center">
           <p class="text-center mb-4">Code-barres détecté : {{ detectedBarcode }}</p>
