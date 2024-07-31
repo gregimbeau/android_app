@@ -1,0 +1,6 @@
+{
+	"appId": "com.abrege.caisse",
+	"appName": "Caisse Test",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}
