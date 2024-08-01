@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, watchEffect } from 'vue';
 import LoadingScreen from '@/components/LoadingScreen.vue';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { getToken, removeToken } from '@/utils/storage';
@@ -47,12 +47,11 @@ const checkAuthentication = async () => {
   const token = await getToken('authToken');
   console.log("Token:", token);
   isAuthenticated.value = !!token;
+  loading.value = false;
   if (!token) {
     console.log("No token found, redirecting to login");
     await router.push('/login');
   }
-  loading.value = false;
-  console.log("Loading set to false");
 };
 
 const login = async () => {
@@ -65,16 +64,29 @@ const logout = async () => {
   await router.push('/login');
 };
 
+watchEffect(async () => {
+  await checkAuthentication();
+});
+
 onMounted(async () => {
   console.log("App mounted");
   await SplashScreen.hide();
 
-  await checkAuthentication();
-
   if (isDarkMode.value) {
     document.documentElement.classList.add('dark');
   }
+
+  await checkAuthentication();
+
+  // Listen for authentication updates
+  window.addEventListener('auth-update', checkAuthentication);
 });
+
+onBeforeUnmount(() => {
+  // Clean up the event listener
+  window.removeEventListener('auth-update', checkAuthentication);
+});
+
 </script>
 
 <style scoped>

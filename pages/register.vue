@@ -29,7 +29,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { setToken } from '@/utils/storage'; // Assurez-vous que storage.js est dans le dossier utils
+import { setToken } from '@/utils/storage'; // Ensure storage.js is in the utils folder
 
 const username = ref('');
 const password = ref('');
@@ -40,7 +40,9 @@ const register = async () => {
     const userCredentials = JSON.stringify({ username: username.value, password: password.value });
     await setToken('userCredentials', userCredentials);
     alert('Registration successful');
-    router.push('/login');
+    // Simulate login
+    await setToken('authToken', 'dummy-auth-token'); // Set an auth token to simulate login
+    router.push('/'); // Redirect to the /index page
   } else {
     alert('Please fill in all fields');
   }

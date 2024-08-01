@@ -42,7 +42,10 @@ const login = async () => {
     if (username.value === storedUsername && password.value === storedPassword) {
       const token = 'fake-jwt-token';
       await setToken('authToken', token);
-      router.push('/');
+      alert('Login successful');
+      router.push('/'); // Navigate to the home page
+      // Notify parent component to update authentication state
+      window.dispatchEvent(new Event('auth-update'));
     } else {
       alert('Invalid credentials');
     }
