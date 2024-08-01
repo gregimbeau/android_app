@@ -30,6 +30,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { setToken, getToken } from '@/utils/storage';
+import { Toast } from '@capacitor/toast';
 
 const username = ref('');
 const password = ref('');
@@ -42,15 +43,15 @@ const login = async () => {
     if (username.value === storedUsername && password.value === storedPassword) {
       const token = 'fake-jwt-token';
       await setToken('authToken', token);
-      alert('Login successful');
+      await Toast.show({ text: 'Login successful' });
       router.push('/'); // Navigate to the home page
       // Notify parent component to update authentication state
       window.dispatchEvent(new Event('auth-update'));
     } else {
-      alert('Invalid credentials');
+      await Toast.show({ text: 'Invalid credentials' });
     }
   } else {
-    alert('No user registered. Please register first.');
+    await Toast.show({ text: 'No user registered. Please register first.' });
     router.push('/register');
   }
 };

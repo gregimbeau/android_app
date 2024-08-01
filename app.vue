@@ -21,9 +21,10 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from 'vue';
+import { ref, watchEffect, onBeforeUnmount, onMounted } from 'vue';
 import LoadingScreen from '@/components/LoadingScreen.vue';
 import { SplashScreen } from '@capacitor/splash-screen';
+import { Toast } from '@capacitor/toast';
 import { getToken, removeToken } from '@/utils/storage';
 import { useRouter } from 'vue-router';
 
@@ -61,6 +62,7 @@ const login = async () => {
 const logout = async () => {
   await removeToken('authToken');
   isAuthenticated.value = false;
+  await Toast.show({ text: 'Logout successful' });
   await router.push('/login');
 };
 
@@ -86,7 +88,6 @@ onBeforeUnmount(() => {
   // Clean up the event listener
   window.removeEventListener('auth-update', checkAuthentication);
 });
-
 </script>
 
 <style scoped>

@@ -29,7 +29,8 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { setToken } from '@/utils/storage'; // Ensure storage.js is in the utils folder
+import { setToken } from '@/utils/storage';
+import { Toast } from '@capacitor/toast';
 
 const username = ref('');
 const password = ref('');
@@ -39,12 +40,13 @@ const register = async () => {
   if (username.value && password.value) {
     const userCredentials = JSON.stringify({ username: username.value, password: password.value });
     await setToken('userCredentials', userCredentials);
-    alert('Registration successful');
-    // Simulate login
-    await setToken('authToken', 'dummy-auth-token'); // Set an auth token to simulate login
-    router.push('/'); // Redirect to the /index page
+    await setToken('authToken', 'fake-jwt-token'); // Set an auth token to simulate login
+    await Toast.show({ text: 'Registration and login successful' });
+    router.push('/'); // Redirect to the home page
+    // Notify parent component to update authentication state
+    window.dispatchEvent(new Event('auth-update'));
   } else {
-    alert('Please fill in all fields');
+    await Toast.show({ text: 'Please fill in all fields' });
   }
 };
 </script>
