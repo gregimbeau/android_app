@@ -1,12 +1,12 @@
 <template>
   <div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden relative w-4/5 h-3/4">
-      <button @click="closeModal" class="absolute top-4 right-4 text-red-500">
+    <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden relative w-4/5 h-3/4">
+      <button @click="closeModal" class="absolute top-4 right-4 text-red-500 dark:text-red-300">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
-      <div class="flex flex-col items-center justify-center h-full">
+      <div class="flex flex-col items-center justify-center h-full text-gray-900 dark:text-gray-100">
         <video ref="video" class="video-feed mb-4"></video>
         <div v-if="scanning" class="flex flex-col items-center justify-center">
           <p class="text-center mb-4">Positionnez le code-barres devant la camera</p>
@@ -14,9 +14,9 @@
         </div>
         <div v-if="detectedBarcode" class="flex flex-col items-center justify-center">
           <p class="text-center mb-4">Code-barres détecté : {{ detectedBarcode }}</p>
-          <button class="bg-green-500 text-white px-4 py-2 rounded" @click="confirmScan">Confirmer</button>
+          <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" @click="confirmScan">Confirmer</button>
         </div>
-        <button class="bg-red-500 text-white px-4 py-2 rounded absolute bottom-4" @click="stopScan">Arrêter le scan</button>
+        <button class="bg-red-500 text-white px-4 py-2 rounded absolute bottom-4 hover:bg-red-600" @click="stopScan">Arrêter le scan</button>
       </div>
     </div>
   </div>

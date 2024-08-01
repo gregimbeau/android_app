@@ -1,0 +1,12 @@
+/* assets/css/global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+.page-enter-active, .page-leave-active {
+  @apply transition-all duration-500 ease-out;
+}
+.page-enter-from, .page-leave-to {
+  @apply opacity-0 transform translate-y-4;
+}

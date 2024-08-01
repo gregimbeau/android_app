@@ -1,16 +1,23 @@
 <template>
-  <div class="bg-white shadow rounded-lg p-4">
-    <h2 class="text-2xl font-bold mb-4">Current Order</h2>
+  <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-4 transition-colors duration-300">
+    <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">Current Order</h2>
     <ul>
-      <li v-for="orderItem in orderItems" :key="orderItem.id" class="border-b last:border-none py-2 flex justify-between">
-        <span>{{ orderItem.name }} x{{ orderItem.quantity }}</span>
+      <li
+        v-for="orderItem in orderItems"
+        :key="orderItem.id"
+        class="border-b last:border-none py-2 flex justify-between dark:border-gray-700">
+        <span class="text-gray-900 dark:text-gray-100">{{ orderItem.name }} x{{ orderItem.quantity }}</span>
         <div>
-          <span class="mr-4">${{ orderItem.price * orderItem.quantity }}</span>
-          <button class="bg-red-500 text-white px-2 py-1 rounded" @click="removeItem(orderItem)">Remove</button>
+          <span class="mr-4 text-gray-900 dark:text-gray-100">${{ orderItem.price * orderItem.quantity }}</span>
+          <button
+            class="bg-red-500 dark:bg-red-600 text-white px-2 py-1 rounded"
+            @click="removeItem(orderItem)">
+            Remove
+          </button>
         </div>
       </li>
     </ul>
-    <div class="mt-4 text-right text-xl font-bold">
+    <div class="mt-4 text-right text-xl font-bold text-gray-900 dark:text-gray-100">
       Total: ${{ totalAmount }}
     </div>
   </div>
