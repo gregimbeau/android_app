@@ -1,34 +1,34 @@
 <template>
   <div class="container mx-auto p-4 max-w-lg bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-300">
-    <h1 class="text-2xl font-bold mb-4">Geolocation Page</h1>
+    <h1 class="text-2xl font-bold mb-4">{{ $t('geolocation.title') }}</h1>
     <div class="mb-4 flex justify-between">
       <button @click="getCurrentLocation" class="bg-blue-500 text-white px-4 py-2 rounded shadow-lg hover:bg-blue-600 transition">
-        Get Current Location
+        {{ $t('geolocation.getCurrentLocation') }}
       </button>
       <button @click="startTracking" class="bg-green-500 text-white px-4 py-2 rounded shadow-lg hover:bg-green-600 transition">
-        Start Tracking
+        {{ $t('geolocation.startTracking') }}
       </button>
       <button @click="stopTracking" class="bg-red-500 text-white px-4 py-2 rounded shadow-lg hover:bg-red-600 transition">
-        Stop Tracking
+        {{ $t('geolocation.stopTracking') }}
       </button>
     </div>
     <div v-if="currentPosition" class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md mb-4">
-      <h2 class="text-xl font-semibold mb-2">Current Position:</h2>
-      <p>Latitude: {{ currentPosition.coords.latitude }}</p>
-      <p>Longitude: {{ currentPosition.coords.longitude }}</p>
-      <p>Accuracy: {{ currentPosition.coords.accuracy }} meters</p>
-      <p v-if="currentPosition.coords.altitude !== null">Altitude: {{ currentPosition.coords.altitude }} meters</p>
-      <p v-if="currentPosition.coords.heading !== null">Heading: {{ currentPosition.coords.heading }} degrees</p>
-      <p v-if="currentPosition.coords.speed !== null">Speed: {{ currentPosition.coords.speed }} m/s</p>
+      <h2 class="text-xl font-semibold mb-2">{{ $t('geolocation.currentPosition') }}:</h2>
+      <p>{{ $t('geolocation.latitude') }}: {{ currentPosition.coords.latitude }}</p>
+      <p>{{ $t('geolocation.longitude') }}: {{ currentPosition.coords.longitude }}</p>
+      <p>{{ $t('geolocation.accuracy') }}: {{ currentPosition.coords.accuracy }} {{ $t('geolocation.meters') }}</p>
+      <p v-if="currentPosition.coords.altitude !== null">{{ $t('geolocation.altitude') }}: {{ currentPosition.coords.altitude }} {{ $t('geolocation.meters') }}</p>
+      <p v-if="currentPosition.coords.heading !== null">{{ $t('geolocation.heading') }}: {{ currentPosition.coords.heading }} {{ $t('geolocation.degrees') }}</p>
+      <p v-if="currentPosition.coords.speed !== null">{{ $t('geolocation.speed') }}: {{ currentPosition.coords.speed }} {{ $t('geolocation.mps') }}</p>
     </div>
     <div v-if="trackingPosition" class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md mb-4">
-      <h2 class="text-xl font-semibold mb-2">Tracking Position:</h2>
-      <p>Latitude: {{ trackingPosition.coords.latitude }}</p>
-      <p>Longitude: {{ trackingPosition.coords.longitude }}</p>
-      <p>Accuracy: {{ trackingPosition.coords.accuracy }} meters</p>
-      <p v-if="trackingPosition.coords.altitude !== null">Altitude: {{ trackingPosition.coords.altitude }} meters</p>
-      <p v-if="trackingPosition.coords.heading !== null">Heading: {{ trackingPosition.coords.heading }} degrees</p>
-      <p v-if="trackingPosition.coords.speed !== null">Speed: {{ trackingPosition.coords.speed }} m/s</p>
+      <h2 class="text-xl font-semibold mb-2">{{ $t('geolocation.trackingPosition') }}:</h2>
+      <p>{{ $t('geolocation.latitude') }}: {{ trackingPosition.coords.latitude }}</p>
+      <p>{{ $t('geolocation.longitude') }}: {{ trackingPosition.coords.longitude }}</p>
+      <p>{{ $t('geolocation.accuracy') }}: {{ trackingPosition.coords.accuracy }} {{ $t('geolocation.meters') }}</p>
+      <p v-if="trackingPosition.coords.altitude !== null">{{ $t('geolocation.altitude') }}: {{ trackingPosition.coords.altitude }} {{ $t('geolocation.meters') }}</p>
+      <p v-if="trackingPosition.coords.heading !== null">{{ $t('geolocation.heading') }}: {{ trackingPosition.coords.heading }} {{ $t('geolocation.degrees') }}</p>
+      <p v-if="trackingPosition.coords.speed !== null">{{ $t('geolocation.speed') }}: {{ trackingPosition.coords.speed }} {{ $t('geolocation.mps') }}</p>
     </div>
     <div id="map" class="h-96 mt-4 rounded-lg shadow-lg"></div>
     <div class="fixed bottom-4 right-4">
@@ -40,7 +40,6 @@
     </div>
   </div>
 </template>
-
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';

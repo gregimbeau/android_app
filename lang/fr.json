@@ -1,0 +1,103 @@
+{
+  "login": "Connexion",
+  "username": "Nom d'utilisateur",
+  "password": "Mot de passe",
+  "loginButton": "Connexion",
+  "registerLink": "Vous n'avez pas de compte? Inscrivez-vous ici",
+  "register": {
+    "title": "Inscription",
+    "usernamePlaceholder": "Nom d'utilisateur",
+    "passwordPlaceholder": "Mot de passe",
+    "registerButton": "Inscription",
+    "loginLink": "Vous avez déjà un compte? Connectez-vous ici"
+  },
+  "payment": {
+    "title": "Page de Paiement",
+    "totalAmount": "Montant à payer",
+    "billingDetails": "Informations de facturation",
+    "fullName": "Nom complet",
+    "address": "Adresse",
+    "city": "Ville",
+    "zip": "Code postal",
+    "country": "Pays",
+    "creditCardDetails": "Informations de la carte de crédit",
+    "cardNumber": "Numéro de carte",
+    "expiryDate": "Date d'expiration",
+    "cvv": "CVV",
+    "paymentOptions": "Options de paiement",
+    "creditCard": "Carte de crédit",
+    "paypal": "PayPal",
+    "bankTransfer": "Transfert bancaire",
+    "payButton": "Payer",
+    "cancelButton": "Annuler",
+    "successTitle": "Paiement réussi",
+    "successMessage": "Voulez-vous que le ticket vous soit envoyé par email ?",
+    "emailPlaceholder": "Votre adresse email",
+    "sendButton": "Envoyer",
+    "yesButton": "Oui",
+    "noButton": "Non",
+    "returnButton": "Retour à la caisse"
+  },
+  "orderHistory": {
+    "title": "Historique des commandes",
+    "order": "Commande",
+    "viewDetails": "Voir les détails",
+    "closeDetails": "Réfermer les détails",
+    "paymentDetails": "Détails du paiement",
+    "fullName": "Nom complet",
+    "address": "Adresse",
+    "city": "Ville",
+    "zip": "Code postal",
+    "country": "Pays",
+    "paymentOption": "Option de paiement",
+    "amount": "Montant",
+    "orderDetails": "Détails de la commande",
+    "noOrders": "Aucune commande passée."
+  },
+  "index": {
+    "title": "Projet Test Abrege Caisse",
+    "cashRegister": "Caisse",
+    "paymentPage": "Page de paiement",
+    "ordersPage": "Page des commandes",
+    "geolocationPage": "Page de Géolocalisation",
+    "loginPage": "Page de connexion",
+    "projectDescription": "Ceci est un projet de test des fonctionnalités de capacitor"
+  },
+  "geolocation": {
+    "title": "Page de Géolocalisation",
+    "getCurrentLocation": "Obtenir la Position Actuelle",
+    "startTracking": "Commencer le Suivi",
+    "stopTracking": "Arrêter le Suivi",
+    "currentPosition": "Position Actuelle",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "accuracy": "Précision",
+    "altitude": "Altitude",
+    "heading": "Cap",
+    "speed": "Vitesse",
+    "meters": "mètres",
+    "degrees": "degrés",
+    "mps": "m/s",
+    "trackingPosition": "Position de Suivi"
+  },
+  "caisse": {
+    "title": "Système de point de vente de restaurant",
+    "scanBarcode": "Scanner un code-barres",
+    "processPayment": "Traiter le paiement",
+    "clearOrder": "Effacer la commande"
+  },
+  "orderSummary": {
+    "currentOrder": "Commande Actuelle",
+    "remove": "Supprimer",
+    "total": "Total"
+  },
+  "barcodeScanner": {
+    "positionBarcode": "Positionnez le code-barres devant la camera",
+    "detectedBarcode": "Code-barres détecté",
+    "confirm": "Confirmer",
+    "stopScan": "Arrêter le scan",
+    "cameraSupportError": "Votre appareil ne supporte pas l'accès à la caméra.",
+    "cameraAccessError": "Erreur d'accès à la caméra.",
+    "confirmedBarcode": "Code-barres confirmé"
+  }
+}

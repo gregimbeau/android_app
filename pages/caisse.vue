@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto p-4 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-    <h1 class="text-4xl font-bold mb-6">Restaurant POS System</h1>
+    <h1 class="text-4xl font-bold mb-6">{{ $t('caisse.title') }}</h1>
     <div class="grid grid-cols-4 gap-4">
       <ItemButton
         v-for="item in menuItems"
@@ -12,7 +12,7 @@
         <div
           class="barcode-scanner bg-yellow-500 dark:bg-yellow-600 text-white flex items-center justify-center cursor-pointer rounded-2xl h-24"
           @click="openScannerModal">
-          <span>Scanner un code-barres</span>
+          <span>{{ $t('caisse.scanBarcode') }}</span>
         </div>
       </div>
     </div>
@@ -26,12 +26,12 @@
       <button
         class="bg-green-500 dark:bg-green-600 text-white px-4 py-2 rounded"
         @click="redirectToPayment">
-        Process Payment
+        {{ $t('caisse.processPayment') }}
       </button>
       <button
         class="bg-red-500 dark:bg-red-600 text-white px-4 py-2 rounded"
         @click="clearOrder">
-        Clear Order
+        {{ $t('caisse.clearOrder') }}
       </button>
     </div>
     <!-- Affiche la modale de scan si showScannerModal est true -->

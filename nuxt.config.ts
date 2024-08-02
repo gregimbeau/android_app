@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   ssr: false,
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt"],
+  modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "@nuxtjs/i18n"],
   css: ["@/assets/css/global.css"],
   shadcn: {
     /**
@@ -15,5 +15,16 @@ export default defineNuxtConfig({
      * @default "./components/ui"
      */
     componentDir: "./components/ui",
+  },
+  i18n: {
+    strategy: "no_prefix",
+    defaultLocale: "fr",
+    lazy: true,
+    langDir: "lang",
+    locales: [
+      { code: "en", file: "en.json" },
+      { code: "fr", file: "fr.json" },
+    ],
+    trailingSlash: true,
   },
 });

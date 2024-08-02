@@ -1,27 +1,27 @@
 <template>
   <div class="flex flex-col w-full h-screen items-center justify-center p-4 bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-    <h1 class="text-3xl font-medium mb-6">Login</h1>
+    <h1 class="text-3xl font-medium mb-6">{{ $t('login') }}</h1>
     <form @submit.prevent="login" class="space-y-4 w-full max-w-md">
       <input
         type="text"
         v-model="username"
-        placeholder="Username"
+        :placeholder="$t('username')"
         class="block w-full p-4 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
         required />
       <input
         type="password"
         v-model="password"
-        placeholder="Password"
+        :placeholder="$t('password')"
         class="block w-full p-4 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
         required />
       <button
         type="submit"
         class="block w-full p-4 bg-blue-500 dark:bg-blue-700 text-white rounded-lg hover:bg-blue-600 dark:hover:bg-blue-800 transition">
-        Login
+        {{ $t('loginButton') }}
       </button>
     </form>
     <nuxt-link to="/register" class="mt-4 text-blue-500 dark:text-blue-300 hover:underline">
-      Don't have an account? Register here
+      {{ $t('registerLink') }}
     </nuxt-link>
   </div>
 </template>

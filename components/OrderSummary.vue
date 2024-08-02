@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-4 transition-colors duration-300">
-    <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">Current Order</h2>
+    <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">{{ $t('orderSummary.currentOrder') }}</h2>
     <ul>
       <li
         v-for="orderItem in orderItems"
@@ -12,13 +12,13 @@
           <button
             class="bg-red-500 dark:bg-red-600 text-white px-2 py-1 rounded"
             @click="removeItem(orderItem)">
-            Remove
+            {{ $t('orderSummary.remove') }}
           </button>
         </div>
       </li>
     </ul>
     <div class="mt-4 text-right text-xl font-bold text-gray-900 dark:text-gray-100">
-      Total: ${{ totalAmount }}
+      {{ $t('orderSummary.total') }}: ${{ totalAmount }}
     </div>
   </div>
 </template>
@@ -26,6 +26,9 @@
 <script setup>
 import { computed } from 'vue';
 import { defineProps, defineEmits } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const props = defineProps({
   orderItems: {

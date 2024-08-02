@@ -9,14 +9,14 @@
       <div class="flex flex-col items-center justify-center h-full text-gray-900 dark:text-gray-100">
         <video ref="video" class="video-feed mb-4"></video>
         <div v-if="scanning" class="flex flex-col items-center justify-center">
-          <p class="text-center mb-4">Positionnez le code-barres devant la camera</p>
+          <p class="text-center mb-4">{{ $t('barcodeScanner.positionBarcode') }}</p>
           <div class="loader mb-4"></div>
         </div>
         <div v-if="detectedBarcode" class="flex flex-col items-center justify-center">
-          <p class="text-center mb-4">Code-barres détecté : {{ detectedBarcode }}</p>
-          <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" @click="confirmScan">Confirmer</button>
+          <p class="text-center mb-4">{{ $t('barcodeScanner.detectedBarcode') }} : {{ detectedBarcode }}</p>
+          <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" @click="confirmScan">{{ $t('barcodeScanner.confirm') }}</button>
         </div>
-        <button class="bg-red-500 text-white px-4 py-2 rounded absolute bottom-4 hover:bg-red-600" @click="stopScan">Arrêter le scan</button>
+        <button class="bg-red-500 text-white px-4 py-2 rounded absolute bottom-4 hover:bg-red-600" @click="stopScan">{{ $t('barcodeScanner.stopScan') }}</button>
       </div>
     </div>
   </div>
@@ -25,6 +25,9 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import { BrowserMultiFormatReader } from '@zxing/library';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const emit = defineEmits(['close']);
 const video = ref<HTMLVideoElement | null>(null);
@@ -34,7 +37,7 @@ let codeReader: BrowserMultiFormatReader | null = null;
 
 const startScan = async () => {
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-    alert('Votre appareil ne supporte pas l\'accès à la caméra.');
+    alert(t('barcodeScanner.cameraSupportError'));
     return;
   }
 
@@ -45,13 +48,13 @@ const startScan = async () => {
         detectedBarcode.value = result.getText();
         scanning.value = false;
         stopScan();
-        alert(`Code-barres détecté : ${detectedBarcode.value}`);
+        alert(`${t('barcodeScanner.detectedBarcode')} : ${detectedBarcode.value}`);
         closeModal();
       }
     })
     .catch(err => {
       console.error(err);
-      alert('Erreur d\'accès à la caméra.');
+      alert(t('barcodeScanner.cameraAccessError'));
     });
 };
 
@@ -67,7 +70,7 @@ const stopScan = () => {
 };
 
 const confirmScan = () => {
-  alert(`Code-barres confirmé : ${detectedBarcode.value}`);
+  alert(`${t('barcodeScanner.confirmedBarcode')} : ${detectedBarcode.value}`);
   closeModal();
 };
 

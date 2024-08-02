@@ -1,0 +1,103 @@
+{
+  "login": "Login",
+  "username": "Username",
+  "password": "Password",
+  "loginButton": "Login",
+  "registerLink": "Don't have an account? Register here",
+  "register": {
+    "title": "Register",
+    "usernamePlaceholder": "Username",
+    "passwordPlaceholder": "Password",
+    "registerButton": "Register",
+    "loginLink": "Already have an account? Login here"
+  },
+  "payment": {
+    "title": "Payment Page",
+    "totalAmount": "Total Amount to Pay",
+    "billingDetails": "Billing Information",
+    "fullName": "Full Name",
+    "address": "Address",
+    "city": "City",
+    "zip": "Postal Code",
+    "country": "Country",
+    "creditCardDetails": "Credit Card Information",
+    "cardNumber": "Card Number",
+    "expiryDate": "Expiration Date",
+    "cvv": "CVV",
+    "paymentOptions": "Payment Options",
+    "creditCard": "Credit Card",
+    "paypal": "PayPal",
+    "bankTransfer": "Bank Transfer",
+    "payButton": "Pay",
+    "cancelButton": "Cancel",
+    "successTitle": "Payment Successful",
+    "successMessage": "Would you like the receipt to be sent to your email?",
+    "emailPlaceholder": "Your email address",
+    "sendButton": "Send",
+    "yesButton": "Yes",
+    "noButton": "No",
+    "returnButton": "Return to POS"
+  },
+  "orderHistory": {
+    "title": "Order History",
+    "order": "Order",
+    "viewDetails": "View Details",
+    "closeDetails": "Close Details",
+    "paymentDetails": "Payment Details",
+    "fullName": "Full Name",
+    "address": "Address",
+    "city": "City",
+    "zip": "Postal Code",
+    "country": "Country",
+    "paymentOption": "Payment Option",
+    "amount": "Amount",
+    "orderDetails": "Order Details",
+    "noOrders": "No orders have been placed."
+  },
+  "index": {
+    "title": "Test Project Abrege Cash Register",
+    "cashRegister": "Cash Register",
+    "paymentPage": "Payment Page",
+    "ordersPage": "Orders Page",
+    "geolocationPage": "Geolocation Page",
+    "loginPage": "Login Page",
+    "projectDescription": "This is a test project for capacitor functionalities"
+  },
+  "geolocation": {
+    "title": "Geolocation Page",
+    "getCurrentLocation": "Get Current Location",
+    "startTracking": "Start Tracking",
+    "stopTracking": "Stop Tracking",
+    "currentPosition": "Current Position",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "accuracy": "Accuracy",
+    "altitude": "Altitude",
+    "heading": "Heading",
+    "speed": "Speed",
+    "meters": "meters",
+    "degrees": "degrees",
+    "mps": "m/s",
+    "trackingPosition": "Tracking Position"
+  },
+  "caisse": {
+    "title": "Restaurant POS System",
+    "scanBarcode": "Scan a Barcode",
+    "processPayment": "Process Payment",
+    "clearOrder": "Clear Order"
+  },
+  "orderSummary": {
+    "currentOrder": "Current Order",
+    "remove": "Remove",
+    "total": "Total"
+  },
+  "barcodeScanner": {
+    "positionBarcode": "Position the barcode in front of the camera",
+    "detectedBarcode": "Detected barcode",
+    "confirm": "Confirm",
+    "stopScan": "Stop Scan",
+    "cameraSupportError": "Your device does not support camera access.",
+    "cameraAccessError": "Error accessing the camera.",
+    "confirmedBarcode": "Confirmed barcode"
+  }
+}
