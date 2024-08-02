@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import { ref, onBeforeUnmount, onMounted, computed } from 'vue';
+import { ref, onBeforeUnmount, onMounted, computed,watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import LoadingScreen from '@/components/LoadingScreen.vue';
 import { SplashScreen } from '@capacitor/splash-screen';
@@ -37,12 +37,11 @@ import { useRouter } from 'vue-router';
 
 defineCustomElements(window);
 
-const { locale, t } = useI18n();
+const { locale } = useI18n();
 const isDarkMode = ref(localStorage.getItem('darkMode') === 'true');
 const loading = ref(true);
 const isAuthenticated = ref(false);
 const $router = useRouter();
-
 
 const toggleDarkMode = () => {
   isDarkMode.value = !isDarkMode.value;
@@ -52,15 +51,6 @@ const toggleDarkMode = () => {
   } else {
     document.documentElement.classList.remove('dark');
     localStorage.setItem('darkMode', 'false');
-  }
-};
-
-const initializeLanguage = () => {
-  const storedLanguage = localStorage.getItem('language');
-  if (storedLanguage) {
-    locale.value = storedLanguage;
-  } else {
-    locale.value = 'fr'; // Default language
   }
 };
 
@@ -107,9 +97,6 @@ const initializeApp = async () => {
     document.documentElement.classList.add('dark');
   }
 
-  // Initialize language
-  initializeLanguage();
-
   // Add a delay to simulate loading screen duration
   await new Promise(resolve => setTimeout(resolve, 3000));
 
@@ -123,9 +110,20 @@ const initializeApp = async () => {
   window.addEventListener('auth-update', checkAuthentication);
 };
 
+onMounted(() => {
+  const savedLocale = localStorage.getItem('language');
+  if (savedLocale) {
+    locale.value = savedLocale;
+  }
+});
+
 onMounted(async () => {
   console.log("App mounted");
   await initializeApp();
+});
+
+watch(() => locale.value, (newLocale) => {
+  localStorage.setItem('language', newLocale);
 });
 
 onBeforeUnmount(() => {
@@ -133,7 +131,3 @@ onBeforeUnmount(() => {
   window.removeEventListener('auth-update', checkAuthentication);
 });
 </script>
-
-<style scoped>
-/* Add any custom styles here */
-</style>

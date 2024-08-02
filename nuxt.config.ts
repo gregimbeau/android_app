@@ -6,7 +6,6 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "@nuxtjs/i18n"],
   css: ["@/assets/css/global.css"],
   plugins: [{ src: "~/plugins/pwa-elements.client.ts", mode: "client" }],
-
   shadcn: {
     /**
      * Prefix for all the imported component
@@ -23,7 +22,7 @@ export default defineNuxtConfig({
       { code: "en", file: "en.json" },
       { code: "fr", file: "fr.json" },
     ],
-    defaultLocale: "fr",
-    langDir: "lang/",
+    langDir: "lang",
+    strategy: "no_prefix",
   },
 });

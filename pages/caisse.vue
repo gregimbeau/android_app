@@ -132,4 +132,5 @@ onMounted(() => {
 });
 
 updateTotalAmount(); // Initialiser le montant total
+
 </script>
