@@ -26,19 +26,23 @@
 </template>
 
 <script setup>
-import { ref, watchEffect, onBeforeUnmount, onMounted, computed } from 'vue';
+import { ref, onBeforeUnmount, onMounted, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import LoadingScreen from '@/components/LoadingScreen.vue';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { Toast } from '@capacitor/toast';
 import { getToken, removeToken } from '@/utils/storage';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { useRouter } from 'vue-router';
 
-const { locale } = useI18n();
+defineCustomElements(window);
+
+const { locale, t } = useI18n();
 const isDarkMode = ref(localStorage.getItem('darkMode') === 'true');
 const loading = ref(true);
 const isAuthenticated = ref(false);
-const router = useRouter();
+const $router = useRouter();
+
 
 const toggleDarkMode = () => {
   isDarkMode.value = !isDarkMode.value;
@@ -51,8 +55,21 @@ const toggleDarkMode = () => {
   }
 };
 
+const initializeLanguage = () => {
+  const storedLanguage = localStorage.getItem('language');
+  if (storedLanguage) {
+    locale.value = storedLanguage;
+  } else {
+    locale.value = 'fr'; // Default language
+  }
+};
+
 const toggleLanguage = () => {
-  locale.value = locale.value === 'en' ? 'fr' : 'en';
+  if (locale.value === 'fr') {
+    locale.value = 'en';
+  } else {
+    locale.value = 'fr';
+  }
   localStorage.setItem('language', locale.value);
 };
 
@@ -64,19 +81,19 @@ const checkAuthentication = async () => {
   isAuthenticated.value = !!token;
   if (!token) {
     console.log("No token found, redirecting to login");
-    await router.push('/login');
+    await $router.push('/login'); // Utiliser $router
   }
 };
 
 const login = async () => {
-  await router.push('/login');
+  await $router.push('/login'); // Utiliser $router
 };
 
 const logout = async () => {
   await removeToken('authToken');
   isAuthenticated.value = false;
   await Toast.show({ text: 'Logout successful' });
-  await router.push('/login');
+  await $router.push('/login'); // Utiliser $router
 };
 
 const initializeApp = async () => {
@@ -90,11 +107,8 @@ const initializeApp = async () => {
     document.documentElement.classList.add('dark');
   }
 
-  // Set language from localStorage
-  const storedLanguage = localStorage.getItem('language');
-  if (storedLanguage) {
-    locale.value = storedLanguage;
-  }
+  // Initialize language
+  initializeLanguage();
 
   // Add a delay to simulate loading screen duration
   await new Promise(resolve => setTimeout(resolve, 3000));

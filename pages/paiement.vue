@@ -1,16 +1,23 @@
 <template>
   <div class="container mx-auto p-4 max-w-lg">
-    <h1 class="text-2xl font-bold mb-4">{{ $t('payment.title') }}</h1>
-    <h2 class="text-xl font-semibold mb-4">{{ $t('payment.totalAmount') }} : {{ totalAmount }}€</h2>
+    <h1 class="text-2xl font-bold mb-4">{{ $t("payment.title") }}</h1>
+    <h2 class="text-xl font-semibold mb-4">
+      {{ $t("payment.totalAmount") }} : {{ totalAmount }}€
+    </h2>
 
     <!-- Formulaire de paiement -->
     <form @submit.prevent="processPayment" class="space-y-4">
       <!-- Informations de facturation -->
       <div>
-        <h2 class="text-lg font-semibold mb-2">{{ $t('payment.billingDetails') }}</h2>
+        <h2 class="text-lg font-semibold mb-2">
+          {{ $t("payment.billingDetails") }}
+        </h2>
         <div class="grid grid-cols-1 gap-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t('payment.fullName') }}</label>
+            <label
+              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >{{ $t("payment.fullName") }}</label
+            >
             <input
               type="text"
               v-model="billingDetails.fullName"
@@ -18,7 +25,10 @@
               required />
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t('payment.address') }}</label>
+            <label
+              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >{{ $t("payment.address") }}</label
+            >
             <input
               type="text"
               v-model="billingDetails.address"
@@ -26,7 +36,10 @@
               required />
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t('payment.city') }}</label>
+            <label
+              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >{{ $t("payment.city") }}</label
+            >
             <input
               type="text"
               v-model="billingDetails.city"
@@ -34,7 +47,10 @@
               required />
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t('payment.zip') }}</label>
+            <label
+              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >{{ $t("payment.zip") }}</label
+            >
             <input
               type="text"
               v-model="billingDetails.zip"
@@ -42,7 +58,10 @@
               required />
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t('payment.country') }}</label>
+            <label
+              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >{{ $t("payment.country") }}</label
+            >
             <input
               type="text"
               v-model="billingDetails.country"
@@ -54,10 +73,15 @@
 
       <!-- Informations de la carte de crédit -->
       <div>
-        <h2 class="text-lg font-semibold mb-2">{{ $t('payment.creditCardDetails') }}</h2>
+        <h2 class="text-lg font-semibold mb-2">
+          {{ $t("payment.creditCardDetails") }}
+        </h2>
         <div class="grid grid-cols-1 gap-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t('payment.cardNumber') }}</label>
+            <label
+              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >{{ $t("payment.cardNumber") }}</label
+            >
             <input
               type="text"
               v-model="paymentDetails.cardNumber"
@@ -66,7 +90,10 @@
           </div>
           <div class="flex space-x-4">
             <div class="flex-1">
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t('payment.expiryDate') }}</label>
+              <label
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >{{ $t("payment.expiryDate") }}</label
+              >
               <input
                 type="text"
                 v-model="paymentDetails.expiryDate"
@@ -75,7 +102,10 @@
                 required />
             </div>
             <div class="flex-1">
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t('payment.cvv') }}</label>
+              <label
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >{{ $t("payment.cvv") }}</label
+              >
               <input
                 type="text"
                 v-model="paymentDetails.cvv"
@@ -88,7 +118,9 @@
 
       <!-- Options de paiement -->
       <div>
-        <h2 class="text-lg font-semibold mb-2">{{ $t('payment.paymentOptions') }}</h2>
+        <h2 class="text-lg font-semibold mb-2">
+          {{ $t("payment.paymentOptions") }}
+        </h2>
         <div class="grid grid-cols-1 gap-4">
           <div class="flex items-center">
             <input
@@ -97,7 +129,11 @@
               v-model="paymentOption"
               value="card"
               class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 dark:text-indigo-400 border-gray-300 dark:border-gray-600" />
-            <label for="paymentOptionCard" class="ml-3 block text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t('payment.creditCard') }}</label>
+            <label
+              for="paymentOptionCard"
+              class="ml-3 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >{{ $t("payment.creditCard") }}</label
+            >
           </div>
           <div class="flex items-center">
             <input
@@ -106,7 +142,11 @@
               v-model="paymentOption"
               value="paypal"
               class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 dark:text-indigo-400 border-gray-300 dark:border-gray-600" />
-            <label for="paymentOptionPaypal" class="ml-3 block text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t('payment.paypal') }}</label>
+            <label
+              for="paymentOptionPaypal"
+              class="ml-3 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >{{ $t("payment.paypal") }}</label
+            >
           </div>
           <div class="flex items-center">
             <input
@@ -115,7 +155,11 @@
               v-model="paymentOption"
               value="bank"
               class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 dark:text-indigo-400 border-gray-300 dark:border-gray-600" />
-            <label for="paymentOptionBank" class="ml-3 block text-sm font-medium text-gray-700 dark:text-gray-300">{{ $t('payment.bankTransfer') }}</label>
+            <label
+              for="paymentOptionBank"
+              class="ml-3 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >{{ $t("payment.bankTransfer") }}</label
+            >
           </div>
         </div>
       </div>
@@ -125,13 +169,13 @@
         <button
           type="submit"
           class="w-full bg-indigo-600 text-white px-4 py-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          {{ $t('payment.payButton') }}
+          {{ $t("payment.payButton") }}
         </button>
         <button
           type="button"
           class="w-full bg-gray-600 text-white px-4 py-2 rounded-md shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
           @click="cancelPayment">
-          {{ $t('payment.cancelButton') }}
+          {{ $t("payment.cancelButton") }}
         </button>
       </div>
     </form>
@@ -143,8 +187,10 @@
       <div
         class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden relative w-4/5 max-w-md">
         <div class="p-6">
-          <h2 class="text-2xl font-semibold mb-4">{{ $t('payment.successTitle') }}</h2>
-          <p class="mb-4">{{ $t('payment.successMessage') }}</p>
+          <h2 class="text-2xl font-semibold mb-4">
+            {{ $t("payment.successTitle") }}
+          </h2>
+          <p class="mb-4">{{ $t("payment.successMessage") }}</p>
           <div v-if="emailPrompt">
             <input
               type="email"
@@ -155,24 +201,24 @@
             <button
               class="bg-green-500 text-white px-4 py-2 rounded mr-2"
               @click="sendReceipt">
-              {{ $t('payment.sendButton') }}
+              {{ $t("payment.sendButton") }}
             </button>
             <button
               class="bg-red-500 text-white px-4 py-2 rounded"
               @click="cancelEmail">
-              {{ $t('payment.cancelButton') }}
+              {{ $t("payment.cancelButton") }}
             </button>
           </div>
           <div v-else>
             <button
               class="bg-green-500 text-white px-4 py-2 rounded mr-2"
               @click="promptEmail">
-              {{ $t('payment.yesButton') }}
+              {{ $t("payment.yesButton") }}
             </button>
             <button
               class="bg-red-500 text-white px-4 py-2 rounded"
               @click="skipEmail">
-              {{ $t('payment.noButton') }}
+              {{ $t("payment.noButton") }}
             </button>
           </div>
         </div>
@@ -190,38 +236,20 @@
           <button
             class="bg-blue-500 text-white px-4 py-2 rounded"
             @click="returnToPOS">
-            {{ $t('payment.returnButton') }}
+            {{ $t("payment.returnButton") }}
           </button>
         </div>
       </div>
     </div>
   </div>
-  <div class="fixed bottom-4 right-4">
-    <button
-      class="bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-      @click="redirectToIndex">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="2">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-      </svg>
-    </button>
-  </div>
+  <RoundButton />
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { useRouter } from "vue-router";
+import { navigateTo } from 'nuxt/app';
 
 const totalAmount = ref(0);
-const router = useRouter();
 
 const showModal = ref(false);
 const showMessage = ref(false);
@@ -253,7 +281,9 @@ const paymentDetails = ref({
 const paymentOption = ref("card");
 
 const processPayment = () => {
-  const storedOrderItems = JSON.parse(localStorage.getItem("orderItems") || "[]");
+  const storedOrderItems = JSON.parse(
+    localStorage.getItem("orderItems") || "[]"
+  );
   const order = {
     id: Date.now(),
     billingDetails: billingDetails.value,
@@ -261,7 +291,7 @@ const processPayment = () => {
     paymentOption: paymentOption.value,
     amount: totalAmount.value,
     date: new Date().toLocaleString(),
-    items: storedOrderItems
+    items: storedOrderItems,
   };
 
   // Store order in localStorage
@@ -300,14 +330,11 @@ const returnToPOS = () => {
   localStorage.removeItem("orderItems");
   localStorage.removeItem("totalAmount");
   showMessage.value = false;
-  router.push({ name: "caisse" });
+  navigateTo('/caisse');
 };
 
 const cancelPayment = () => {
-  router.back();
+  navigateTo('/caisse');
 };
 
-const redirectToIndex = () => {
-  router.push({ name: "index" });
-};
 </script>

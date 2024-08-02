@@ -43,7 +43,6 @@ const register = async () => {
     await setToken('authToken', 'fake-jwt-token'); // Set an auth token to simulate login
     await Toast.show({ text: 'Registration and login successful' });
     router.push('/'); // Redirect to the home page
-    // Notify parent component to update authentication state
     window.dispatchEvent(new Event('auth-update'));
   } else {
     await Toast.show({ text: 'Please fill in all fields' });

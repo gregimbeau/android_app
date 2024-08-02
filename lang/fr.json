@@ -83,7 +83,7 @@
   "caisse": {
     "title": "Système de point de vente de restaurant",
     "scanBarcode": "Scanner un code-barres",
-    "processPayment": "Traiter le paiement",
+    "processPayment": "Procéder au paiement",
     "clearOrder": "Effacer la commande"
   },
   "orderSummary": {

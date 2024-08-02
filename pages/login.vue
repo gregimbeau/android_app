@@ -45,7 +45,6 @@ const login = async () => {
       await setToken('authToken', token);
       await Toast.show({ text: 'Login successful' });
       router.push('/'); // Navigate to the home page
-      // Notify parent component to update authentication state
       window.dispatchEvent(new Event('auth-update'));
     } else {
       await Toast.show({ text: 'Invalid credentials' });
