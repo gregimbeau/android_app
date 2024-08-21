@@ -1,6 +1,6 @@
-// File: android/app/src/androidTest/java/com/abrege/caisse/ExampleInstrumentedTest.java
+// File: android/app/src/androidTest/java/com/android/caisse/ExampleInstrumentedTest.java
 
-package com.abrege.caisse;
+package com.android.caisse;
 
 import static org.junit.Assert.*;
 
@@ -23,6 +23,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.abrege.caisse", appContext.getPackageName());
+        assertEquals("com.android.caisse", appContext.getPackageName());
     }
 }

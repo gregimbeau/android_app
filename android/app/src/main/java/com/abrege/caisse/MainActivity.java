@@ -1,4 +1,4 @@
-package com.abrege.caisse;
+package com.android.caisse;
 
 import com.getcapacitor.BridgeActivity;
 

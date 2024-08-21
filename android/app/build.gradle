@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "com.abrege.caisse"
+    namespace "com.android.caisse"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.abrege.caisse"
+        applicationId "com.android.caisse"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 2

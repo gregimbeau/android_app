@@ -1,5 +1,5 @@
 {
-	"appId": "com.abrege.caisse",
+	"appId": "com.android.caisse",
 	"appName": "Caisse Test",
 	"webDir": "dist",
 	"bundledWebRuntime": false
